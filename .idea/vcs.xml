@@ -2,5 +2,8 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Meta iOS Developer Professional Certificate/#1 Introduction to iOS Mobile Application Development/W1/hello_world" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Meta iOS Developer Professional Certificate/#1 Introduction to iOS Mobile Application Development/W3/video_player" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Meta iOS Developer Professional Certificate/#1 Introduction to iOS Mobile Application Development/W3/video_player2" vcs="Git" />
   </component>
 </project>
