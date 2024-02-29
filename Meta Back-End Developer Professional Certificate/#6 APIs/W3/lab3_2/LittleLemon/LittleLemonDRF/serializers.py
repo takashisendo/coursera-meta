@@ -16,7 +16,7 @@ class RatingSerializer (serializers.ModelSerializer):
         validators = [
             UniqueTogetherValidator(
                 queryset=Rating.objects.all(),
-                fields=['user', 'menuitem_id']
+                fields=['user', 'menuitem_id','rating']
             )
         ]
 
