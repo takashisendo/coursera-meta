@@ -1,1 +1,0 @@
-# A read me file to manage VCS for Coursera Meta application.
