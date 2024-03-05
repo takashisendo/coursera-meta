@@ -2,11 +2,12 @@
 from django.shortcuts import render
 
 from .models import Menu
+from django.core.serializers import serialize
 from django.core import serializers
 from .models import Booking
 from datetime import datetime
 import json
-# from .forms import BookingForm
+from .forms import BookingForm
 
 def home(request):
     return render(request, 'index.html')
@@ -14,17 +15,28 @@ def home(request):
 def about(request):
     return render(request, 'about.html')
 
-# def book(request):
-#     form = BookingForm()
-#     if request.method == 'POST':
-#         form = BookingForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#     context = {'form':form}
-#     return render(request, 'book.html', context)
+def book(request):
+    form = BookingForm()
+    if request.method == 'POST':
+        form = BookingForm(request.POST)
+        if form.is_valid():
+            form.save()
+    context = {'form':form}
+    return render(request, 'book.html', context)
 
 # Add code for the bookings() view
+def bookings(request):s
+    # Create a variable called date
+    date = request.GET.get('date', datetime.today().date())
 
+    # Create a variable called bookings
+    bookings = Booking.objects.all()
+
+    # Create a variable called booking_json
+    booking_json = serialize('json', bookings)
+
+    # Return the render() function
+    return render(request, "bookings.html", {"bookings": booking_json})
 
 
 def menu(request):

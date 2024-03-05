@@ -4,7 +4,7 @@
 {% block content %}
 <section>
   <article>
-    <h1><!--Add title here --></h1>
+    <h1>All Reservations</h1>
     <!--Begin row-->
     <div class="row">
       <!--Begin col-->
@@ -34,7 +34,18 @@
 
 <!-- Add your code inside the script tags below  -->
 <script>
+  // Ensure that Django template tags are correctly interpreted by placing this inside a script tag in an HTML file
+  const bookings = JSON.parse('{{ bookings|safe }}');
 
+  // Log the bookings object to the console
+  console.log(bookings);
+
+  // Pretty-print the bookings JSON
+  const pretty_json = JSON.stringify(bookings, null, 2);
+
+  // Optionally, you can log the pretty-printed JSON to the console as well
+  console.log(pretty_json);
 </script>
+
 {% endblock %}
 
