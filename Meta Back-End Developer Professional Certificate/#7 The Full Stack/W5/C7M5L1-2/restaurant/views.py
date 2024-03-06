@@ -25,17 +25,18 @@ def book(request):
     return render(request, 'book.html', context)
 
 # Add code for the bookings() view
-def bookings(request):s
+# Corrected bookings view function
+def bookings(request):
     # Create a variable called date
     date = request.GET.get('date', datetime.today().date())
 
-    # Create a variable called bookings
-    bookings = Booking.objects.all()
+    # Filter bookings based on the provided date
+    bookings = Booking.objects.filter(date=date) # Assuming Booking model has a 'date' field to filter on
 
-    # Create a variable called booking_json
+    # Serialize the filtered bookings
     booking_json = serialize('json', bookings)
 
-    # Return the render() function
+    # Return the render() function with serialized bookings data
     return render(request, "bookings.html", {"bookings": booking_json})
 
 

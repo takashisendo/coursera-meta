@@ -11,15 +11,16 @@
       <div class="column">
           {% csrf_token %}
           <form method="POST" id="form">
-            <!-- {% csrf_token %} -->
             <p>
               <label for="first_name">Name:</label>
               <input type="text" placeholder="Your Name" maxlength="200" required="" id="first_name">
             </p>
             <p>
             <!-- Step 9: Part one -->
+              <label for="reservation_date">Date:</label>
+              <input type="date" required="" id="reservation_date">
             </p>
-      
+
             <p>
               <label for="reservation_slot">Reservation time:</label>
               <select id="reservation_slot">
@@ -40,46 +41,51 @@
       <!--End col-->
     </div>
     <!--End row-->
-
-
-
-
   </article>
 </section>
 <script>
 
-  const date = new Date()
-  document.getElementById('reservation_date').value = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate().toString().padStart(2, "0")}`
+  document.getElementById('reservation_date').valueAsDate = new Date();
 
-  console.log(document.getElementById('reservation_date').value)
-  getBookings()
-
-
-  /*  Step 10: Part two */
-
+  /* Step 10: Part two */
+  document.getElementById('reservation_date').addEventListener('change', function(){
+    getBookings();
+  });
 
   function getBookings() {
     let reserved_slots = []
     const date = document.getElementById('reservation_date').value
     document.getElementById('today').innerHTML = date
-    
+
     fetch("{% url 'bookings' %}" + '?date=' + date)
       .then(r => r.json())
       .then(data => {
         reserved_slots = []
-        bookings = ''
-        
+        let bookings = ''
+
         /* Step 11: Part three */
-
-
-        /* Step 12: Part four  */
-
-        
-        document.getElementById('reservation_slot').innerHTML = slot_options
-        if(bookings==''){
-          bookings = "No bookings"
+        for (let item of data) {
+          console.log(item.fields);
+          reserved_slots.push(item.fields.reservation_slot);
+          bookings += `<p>${item.fields.first_name} - ${formatTime(item.fields.reservation_slot)}</p>`;
         }
-        document.getElementById('bookings').innerHTML = bookings
+
+        /* Step 12: Part four */
+        let slot_options = '<option value="0" disabled>Select time</option>';
+        for (let i = 10; i < 20; i++) {
+          const label = formatTime(i);
+          if (reserved_slots.includes(String(i))) {
+            slot_options += `<option value="${i}" disabled>${label}</option>`;
+          } else {
+            slot_options += `<option value="${i}">${label}</option>`;
+          }
+        }
+
+        document.getElementById('reservation_slot').innerHTML = slot_options;
+        if(bookings == ''){
+          bookings = "No bookings";
+        }
+        document.getElementById('bookings').innerHTML = bookings;
       })
   }
 
@@ -89,7 +95,6 @@
     const label = `${t} ${ampm}`
     return label
   }
-
 
   document.getElementById('button').addEventListener('click', function (e) {
     const formdata = {
@@ -101,9 +106,8 @@
     fetch("{% url 'bookings' %}", { method: 'post', body: JSON.stringify(formdata) })
       .then(r => r.text())
       .then(data => {
-        getBookings()
+        getBookings();
       })
   })
 </script>
 {% endblock %}
-
