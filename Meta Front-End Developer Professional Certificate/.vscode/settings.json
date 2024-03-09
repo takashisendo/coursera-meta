@@ -1,7 +1,0 @@
-{
-    "editor.fontSize": 18,
-    "editor.tabSize": 2,
-    "editor.bracketPairColorization.enabled": true,
-    "editor.codeActionWidget.showHeaders": false,
-    "editor.wordWrap": "on"
-}
