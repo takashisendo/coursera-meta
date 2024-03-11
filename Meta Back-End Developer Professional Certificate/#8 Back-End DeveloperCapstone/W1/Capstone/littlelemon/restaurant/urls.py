@@ -4,8 +4,8 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from rest_framework.authtoken.views import obtain_auth_token
 from .views import BookingViewSet
-from django.urls import path
 from .views import UserListView
+from .views import SingleMenuItemView, MenuItemView  # Import your views
 
 router = DefaultRouter()
 router.register(r'bookings', BookingViewSet)
@@ -17,4 +17,6 @@ urlpatterns = [
     path('', include(router.urls)),
     path('users/', UserListView.as_view(), name='user-list'),
     path('api-token-auth/', obtain_auth_token, name='api_token_auth'),
+    path('menu-items/<int:pk>/', SingleMenuItemView.as_view(), name='menu-item-detail'),
+    path('menu-items/', MenuItemView.as_view(), name='menu-items'),
 ]
