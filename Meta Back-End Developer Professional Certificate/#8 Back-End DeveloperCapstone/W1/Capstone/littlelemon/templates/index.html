@@ -1,11 +1,20 @@
-
-<!--{% load static %}-->
-<!--<img src="{% static 'restaurant/littlelemon.png' %}">-->
+{% load static %}
 <html>
    <head>
       <title>Capstone Project</title>
+      <style>
+         .logo {
+            display: block;
+            margin: auto;
+            width: 50%; /* Adjust this value to control the size of the logo */
+         }
+         body {
+            text-align: center;
+         }
+      </style>
    </head>
    <body>
-      <h1 style="text-align:center;">Welcome To LittleLemon Restaurant</h1>
+      <img src="{% static 'img/logo.png' %}" alt="Logo" class="logo">
+      <h1>Welcome To LittleLemon Restaurant</h1>
    </body>
 </html>
