@@ -125,7 +125,7 @@ def read_file_in_reverse(file_name):
     raise NotImplementedError()
 
 '''
-Here are some sample commands to help you run/test your implementations.
+Here are some sample commands to help you run/tests your implementations.
 Feel free to uncomment/modify/add to them as you wish.
 '''
 def main():

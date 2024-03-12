@@ -104,7 +104,7 @@ def take_order():
     return order
 
 '''
-Here are some sample function calls to help you test your implementations.
+Here are some sample function calls to help you tests your implementations.
 Feel free to change, uncomment, and add these as you wish.
 '''
 def main():

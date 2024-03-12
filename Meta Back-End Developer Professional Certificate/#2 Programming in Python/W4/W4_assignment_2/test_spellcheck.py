@@ -4,16 +4,16 @@ import spellcheck
 
 # String variable to be tested
 alpha = "Checking the length & structure of the sentence."
-beta = "This sentence should fail the test"
+beta = "This sentence should fail the tests"
 
-# Do not delete this function. You may change the value assigned to input to test different inputs to your test functions.
+# Do not delete this function. You may change the value assigned to input to tests different inputs to your tests functions.
 @pytest.fixture
 def input_value():
     input_str = alpha
     return input_str
 
 
-# First test function test_length()
+# First tests function test_length()
 def test_length(input_value):
     """ Tests whether a string has fewer than 10 words and fewer than 50 chars. """
 
@@ -27,7 +27,7 @@ def test_length(input_value):
     assert spellcheck.char_count(string) < 50, "String has more than 50 characters"
 
 
-# Second test function test_struc()
+# Second tests function test_struc()
 def test_struc(input_value):
     """ Tests whether a string begins with a capital letter and ends with a period. """
 

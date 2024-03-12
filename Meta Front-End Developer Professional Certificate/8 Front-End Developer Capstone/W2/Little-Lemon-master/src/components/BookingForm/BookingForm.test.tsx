@@ -39,7 +39,7 @@ describe("BookingForm", () => {
     expect(submitButton).toBeInTheDocument();
   });
 
-  // test("Validation fields", async () => {
+  // tests("Validation fields", async () => {
   //   render(
   //     <BookingForm
   //       availableTimes={{
