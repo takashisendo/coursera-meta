@@ -11,6 +11,7 @@ from .serializers import UserSerializer
 from rest_framework import generics
 from rest_framework.permissions import AllowAny
 
+
 # Create your views here.
 def index(request):
     return render(request, 'index.html', {})
@@ -28,6 +29,7 @@ class SingleMenuItemView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Menu.objects.all()
     serializer_class = MenuSerializer
     permission_classes = [AllowAny]
+
 
 class BookingViewSet(viewsets.ModelViewSet):
     queryset = Booking.objects.all()  # Fetches all Booking objects
